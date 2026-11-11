@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mahad Hassan Shire | Software Developer</title>
+<meta name="description" content="Portfolio of Mahad Hassan Shire — Computer Science student and Software Developer based in Mogadishu, Somalia. Building modern digital experiences.">
+<style>
+:root{
+  --bg:#050810; --bg2:#0a0f1e; --card:rgba(255,255,255,.04); --card-border:rgba(255,255,255,.09);
+  --text:#e8edf7; --muted:#9aa7c2; --accent:#22d3ee; --accent2:#0ea5e9; --accent-dim:rgba(34,211,238,.14);
+  --radius:18px; --max:1120px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--accent);color:#04121a}
+/* NAV */
+/* FLOATING PILL NAV */
+.topbar{position:fixed;top:24px;left:0;right:0;z-index:100;display:flex;justify-content:center;padding:0 16px;pointer-events:none}
+.nav-pill{pointer-events:auto;position:relative;display:flex;align-items:center;gap:4px;padding:7px 8px;border-radius:999px;
+  background:linear-gradient(180deg,rgba(18,26,43,.88),rgba(10,15,26,.82));
+  -webkit-backdrop-filter:blur(20px) saturate(140%);backdrop-filter:blur(20px) saturate(140%);
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 18px 40px rgba(0,0,0,.5),0 2px 0 rgba(255,255,255,.05) inset,0 0 0 1px rgba(0,0,0,.35);
+  transition:box-shadow .3s}
+.nav-links{display:flex;align-items:center;gap:2px;list-style:none;margin:0;padding:0}
+.nav-links a{display:block;padding:10px 21px;border-radius:999px;font-size:.94rem;font-weight:600;color:#a9b7cf;letter-spacing:.01em;
+  transition:color .22s,background .22s,box-shadow .22s}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,.055)}
+.nav-links a.active{color:#fff;background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,.08));
+  box-shadow:0 0 0 1px rgba(255,255,255,.14) inset,0 4px 14px rgba(0,0,0,.28)}
+.nav-sep{width:1px;height:22px;background:rgba(255,255,255,.13);margin:0 5px}
+.sound-btn{width:42px;height:42px;border-radius:999px;display:grid;place-items:center;cursor:pointer;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:#dce6f6;transition:.22s}
+.sound-btn:hover{background:rgba(255,255,255,.12);color:#fff}
+.sound-btn svg{width:17px;height:17px;fill:currentColor}
+.sound-btn.muted{color:#7e8ba1}
+.sound-btn.muted::after{content:"";position:absolute;width:20px;height:1.6px;background:currentColor;transform:rotate(-45deg);border-radius:2px}
+.sound-btn{position:relative}
+.nav-brand{display:none}
+.hamburger{display:none;background:none;border:none;color:#dce6f6;padding:8px 10px;font-size:1.15rem;cursor:pointer;line-height:1}
+@media(max-width:820px){
+  .topbar{top:16px}
+  .nav-links{display:none}
+  .nav-links.open{display:flex;flex-direction:column;align-items:stretch;gap:4px;position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%);width:230px;
+    padding:10px;border-radius:22px;background:rgba(10,15,26,.97);border:1px solid rgba(255,255,255,.12);
+    box-shadow:0 22px 50px rgba(0,0,0,.6);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px)}
+  .nav-links.open a{padding:13px 18px;border-radius:14px}
+  .hamburger{display:block}
+  .nav-sep{margin:0 2px}
+  .nav-brand{display:block;color:#fff;font-weight:800;font-size:.95rem;padding:0 14px 0 12px;letter-spacing:.02em}
+  .nav-brand span{color:var(--accent)}
+}
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:150px 24px 80px;overflow:hidden}
+#bg3d{position:absolute;inset:0;width:100%;height:100%;opacity:.85}
+.hero-glow{position:absolute;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,rgba(34,211,238,.16),transparent 65%);top:-160px;right:-120px;pointer-events:none}
+.hero-inner{position:relative;max-width:var(--max);margin:0 auto;width:100%;display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+@media(max-width:860px){.hero-inner{grid-template-columns:1fr}}
+.badge{display:inline-flex;align-items:center;gap:8px;background:var(--accent-dim);border:1px solid rgba(34,211,238,.35);color:var(--accent);padding:7px 14px;border-radius:999px;font-size:.82rem;font-weight:600;margin-bottom:18px}
+.dot{width:8px;height:8px;border-radius:50%;background:#34d399;box-shadow:0 0 10px #34d399;animation:pulse 1.8s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero h1{font-size:clamp(2.4rem,6vw,4.2rem);line-height:1.08;font-weight:800;letter-spacing:-.02em}
+.hero h1 .grad{background:linear-gradient(90deg,var(--accent),var(--accent2),#818cf8);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .tagline{font-size:clamp(1.05rem,2.4vw,1.35rem);color:var(--accent);font-weight:600;margin:14px 0 6px}
+.hero .loc{color:var(--muted);margin-bottom:16px;font-size:.98rem}
+.hero p.bio{color:var(--muted);max-width:560px;margin-bottom:28px}
+.btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:999px;font-weight:700;font-size:.95rem;transition:transform .2s,box-shadow .2s;cursor:pointer;border:none}
+.btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#04121a;box-shadow:0 8px 28px rgba(34,211,238,.3)}
+.btn-primary:hover{transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:var(--text);border:1px solid var(--card-border)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.social-row{display:flex;gap:12px;margin-top:26px}
+.soc{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:var(--card);border:1px solid var(--card-border);transition:transform .2s,border-color .2s}
+.soc:hover{transform:translateY(-3px);border-color:var(--accent)}
+.soc svg{width:20px;height:20px;fill:var(--text)}
+.hero-card{background:var(--card);border:1px solid var(--card-border);border-radius:24px;padding:28px;backdrop-filter:blur(10px);transform-style:preserve-3d;transition:transform .15s ease-out}
+.hero-card h3{font-size:.85rem;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);margin-bottom:14px}
+.hero-card ul{list-style:none;color:var(--muted);font-size:.95rem}
+.hero-card li{padding:9px 0;border-bottom:1px dashed rgba(255,255,255,.08);display:flex;justify-content:space-between;gap:12px}
+.hero-card li:last-child{border:none}
+.hero-card li b{color:var(--text);font-weight:600}
+/* HANGING ID BADGE (like reference hero) */
+.badge-wrap{position:relative;max-width:340px;margin:0 auto;text-align:center;transform-origin:top center;animation:swing 5s ease-in-out infinite;filter:drop-shadow(0 24px 48px rgba(0,0,0,.55))}
+@keyframes swing{0%,100%{transform:rotate(-1.6deg)}50%{transform:rotate(1.6deg)}}
+.lanyard{width:38px;height:210px;margin:0 auto;background:#0b0f1a;border:1px solid rgba(255,255,255,.14);border-radius:8px;display:flex;align-items:center;justify-content:center;position:relative;z-index:2}
+.lanyard span{writing-mode:vertical-rl;transform:rotate(180deg);color:#e8edf7;font-size:.6rem;font-weight:700;letter-spacing:.11em;text-transform:uppercase;white-space:nowrap}
+.clip{width:52px;height:30px;margin:-6px auto 0;background:linear-gradient(180deg,#d7dee9,#8b95a8);border-radius:7px;border:1px solid #5b6474;position:relative;z-index:3;box-shadow:0 4px 10px rgba(0,0,0,.4)}
+.clip::after{content:"";position:absolute;left:50%;top:100%;transform:translateX(-50%);width:16px;height:22px;border:3px solid #c9d2e0;border-top:none;border-radius:0 0 10px 10px}
+.id-badge{width:100%;border-radius:20px;border:1px solid rgba(255,255,255,.18);display:block;margin-top:14px;background:#0a0f1e}
+.badge-caption{color:var(--muted);font-size:.82rem;margin-top:14px}
+/* SECTIONS */
+section{padding:90px 24px;scroll-margin-top:96px}
+.wrap{max-width:var(--max);margin:0 auto}
+.eyebrow{color:var(--accent);font-weight:700;font-size:.82rem;text-transform:uppercase;letter-spacing:.16em;margin-bottom:10px}
+h2{font-size:clamp(1.8rem,4vw,2.5rem);font-weight:800;letter-spacing:-.02em;margin-bottom:12px}
+.sub{color:var(--muted);max-width:640px;margin-bottom:36px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+@media(max-width:860px){.grid2,.grid3{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);padding:26px;transition:transform .25s,border-color .25s}
+.card:hover{transform:translateY(-4px);border-color:rgba(34,211,238,.4)}
+.card h3{font-size:1.08rem;margin-bottom:6px}
+.card .meta{color:var(--accent);font-size:.85rem;font-weight:600;margin-bottom:8px}
+.card p{color:var(--muted);font-size:.94rem}
+.tag{display:inline-block;background:var(--accent-dim);color:var(--accent);border-radius:999px;padding:3px 11px;font-size:.76rem;font-weight:600;margin:4px 4px 0 0}
+.timeline{border-left:2px solid rgba(34,211,238,.25);padding-left:26px;display:flex;flex-direction:column;gap:22px}
+.tl-item{position:relative;background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);padding:22px}
+.tl-item::before{content:"";position:absolute;left:-33px;top:26px;width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent)}
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:340px 1fr;gap:36px;align-items:start}
+@media(max-width:860px){.about-grid{grid-template-columns:1fr}}
+.photo-frame{border-radius:24px;border:1px solid var(--card-border);background:linear-gradient(160deg,rgba(34,211,238,.14),rgba(129,140,248,.08));padding:34px;text-align:center}
+.avatar{width:150px;height:150px;margin:0 auto 16px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:3rem;font-weight:800;color:#04121a;box-shadow:0 12px 36px rgba(34,211,238,.35)}
+.photo-frame small{color:var(--muted);display:block;margin-top:8px;font-size:.82rem}
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+@media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}}
+.stat{background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);padding:26px;text-align:center}
+.stat .num{font-size:2.2rem;font-weight:800;color:var(--accent)}
+.stat .lbl{color:var(--muted);font-size:.88rem}
+/* TABS */
+.tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px}
+.tab-btn{padding:10px 20px;border-radius:999px;border:1px solid var(--card-border);background:transparent;color:var(--muted);font-weight:600;cursor:pointer;font-size:.92rem}
+.tab-btn.active{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#04121a;border-color:transparent}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+.thumb{height:170px;border-radius:14px;margin-bottom:16px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.4rem;color:#04121a;letter-spacing:.04em}
+.thumb.t1{background:linear-gradient(135deg,#22d3ee,#0ea5e9)}
+.thumb.t2{background:linear-gradient(135deg,#818cf8,#22d3ee)}
+.thumb.t3{background:linear-gradient(135deg,#34d399,#22d3ee)}
+/* SKILLS */
+.skill{margin-bottom:18px}
+.skill .row{display:flex;justify-content:space-between;font-size:.92rem;margin-bottom:7px}
+.bar{height:9px;background:rgba(255,255,255,.08);border-radius:999px;overflow:hidden}
+.fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:999px;width:0;transition:width 1.2s ease}
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+@media(max-width:760px){.contact-grid{grid-template-columns:1fr}}
+.contact-card{display:flex;gap:16px;align-items:center}
+.contact-card .ic{width:52px;height:52px;flex:none;border-radius:14px;background:var(--accent-dim);display:flex;align-items:center;justify-content:center}
+.contact-card .ic svg{width:24px;height:24px;fill:var(--accent)}
+/* CONTACT SPLIT */
+.contact-split{display:grid;grid-template-columns:1.02fr .98fr;gap:26px;align-items:start}
+@media(max-width:900px){.contact-split{grid-template-columns:1fr}}
+.contact-form h3{margin-bottom:6px}
+.contact-form .lead{color:var(--muted);font-size:.93rem;margin-bottom:22px}
+.findme{font-size:.8rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.contact-list{display:flex;flex-direction:column;gap:14px}
+.contact-list .contact-card .ic{width:46px;height:46px;border-radius:12px}
+.contact-list .contact-card .ic svg{width:21px;height:21px}
+.send-btn{width:100%;justify-content:center;background:linear-gradient(90deg,#1e6fff,#0ea5e9);color:#fff;box-shadow:0 10px 30px rgba(30,111,255,.35)}
+.send-btn:hover{transform:translateY(-2px)}
+.send-btn svg{fill:#fff}
+/* COMMENTS */
+.comments-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:start}
+@media(max-width:900px){.comments-grid{grid-template-columns:1fr}}
+.field{display:block;margin-bottom:18px}
+.field > span{display:block;font-size:.86rem;font-weight:600;color:var(--text);margin-bottom:8px}
+.field .input-wrap{position:relative;display:flex;align-items:center}
+.field .input-wrap svg{position:absolute;left:16px;width:18px;height:18px;fill:none;stroke:var(--muted);stroke-width:1.7;pointer-events:none}
+.field textarea + svg,.field .area-wrap svg{top:16px;transform:none}
+.field input[type=text],.field input[type=email],.field textarea{
+  width:100%;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.12);border-radius:14px;
+  color:var(--text);font-size:.95rem;font-family:inherit;padding:14px 16px 14px 46px;outline:none;transition:.2s;resize:vertical}
+.field textarea{padding-left:46px;min-height:130px}
+.field input::placeholder,.field textarea::placeholder{color:#7b89a1}
+.field input:focus,.field textarea:focus{border-color:rgba(34,211,238,.55);background:rgba(34,211,238,.05);box-shadow:0 0 0 4px rgba(34,211,238,.08)}
+.file-drop{display:flex;align-items:center;justify-content:center;gap:10px;padding:18px;border-radius:14px;
+  border:1px dashed rgba(255,255,255,.16);background:rgba(255,255,255,.03);color:var(--muted);
+  font-size:.92rem;font-weight:600;cursor:pointer;transition:.2s}
+.file-drop:hover{border-color:rgba(34,211,238,.5);color:var(--accent);background:rgba(34,211,238,.05)}
+.file-drop svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7}
+.file-drop input{display:none}
+.hint{font-size:.78rem;color:#7b89a1;text-align:center;margin-top:10px}
+.form-status{font-size:.86rem;margin-top:12px;min-height:20px}
+.form-status.ok{color:#34d399}
+.form-status.err{color:#f87171}
+.comments-head{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.05rem;margin-bottom:16px}
+.comments-head .count{background:var(--accent-dim);color:var(--accent);border-radius:999px;padding:2px 10px;font-size:.8rem}
+.comment-list{display:flex;flex-direction:column;gap:14px;max-height:620px;overflow-y:auto;padding-right:6px}
+.comment-list::-webkit-scrollbar{width:6px}
+.comment-list::-webkit-scrollbar-thumb{background:rgba(255,255,255,.14);border-radius:99px}
+.comment{display:flex;gap:14px;background:var(--card);border:1px solid var(--card-border);border-radius:16px;padding:16px}
+.comment .av{width:42px;height:42px;flex:none;border-radius:50%;overflow:hidden;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));color:#04121a;font-weight:800;font-size:.95rem}
+.comment .av img{width:100%;height:100%;object-fit:cover}
+.comment .body{min-width:0}
+.comment .who{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:4px}
+.comment .who b{font-size:.94rem}
+.comment .who time{font-size:.76rem;color:#7b89a1}
+.comment p{font-size:.92rem;color:var(--muted);word-break:break-word;white-space:pre-wrap}
+.empty-comments{color:#7b89a1;font-size:.92rem;border:1px dashed rgba(255,255,255,.14);border-radius:16px;padding:26px;text-align:center}
+footer{border-top:1px solid var(--card-border);padding:34px 24px;text-align:center;color:var(--muted);font-size:.9rem}
+footer b{color:var(--text)}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+.note{background:rgba(251,191,36,.08);border:1px dashed rgba(251,191,36,.45);color:#fcd34d;border-radius:12px;padding:12px 16px;font-size:.85rem;margin-top:16px}
+</style>
+</head>
+<body>
+
+<nav class="topbar">
+  <div class="nav-pill">
+    <span class="nav-brand">Mahad<span>.</span></span>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <span class="nav-sep"></span>
+    <button class="sound-btn" id="soundBtn" aria-label="Toggle sound" title="Toggle sound">
+      <svg viewBox="0 0 24 24"><path d="M13 4.5v15a1 1 0 0 1-1.6.8L6.2 16H3.5A1.5 1.5 0 0 1 2 14.5v-5A1.5 1.5 0 0 1 3.5 8h2.7l5.2-4.3A1 1 0 0 1 13 4.5z"/><path d="M16.5 8.2a1 1 0 0 1 1.4 0 5.4 5.4 0 0 1 0 7.6 1 1 0 0 1-1.4-1.4 3.4 3.4 0 0 0 0-4.8 1 1 0 0 1 0-1.4z"/><path d="M19.1 5.6a1 1 0 0 1 1.4 0 9.3 9.3 0 0 1 0 12.8 1 1 0 0 1-1.4-1.4 7.3 7.3 0 0 0 0-10 1 1 0 0 1 0-1.4z"/></svg>
+    </button>
+    <button class="hamburger" id="hamburger" aria-label="Menu">&#9776;</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="home">
+  <canvas id="bg3d"></canvas>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div>
+      <span class="badge"><span class="dot"></span> Open to internships &middot; Mogadishu, Somalia</span>
+      <h1>Hi, I'm <span class="grad">Mahad Hassan Shire</span></h1>
+      <div class="tagline">Computer Science Student &amp; Web Developer</div>
+      <div class="loc">Based in Mogadishu, Somalia &middot; Studying Computer Science &amp; Networking Security</div>
+      <p class="bio">I am a Computer Science student at Jamhuriya University, studying Networking Security, and a self-taught web developer. I build clean, responsive websites and I am learning something new every single day.</p>
+      <div class="btns">
+        <a class="btn btn-primary" href="#portfolio">View Projects</a>
+        <a class="btn btn-ghost" href="assets/Mahad-Hassan-Shire-CV.pdf" download>Download CV</a>
+        <a class="btn btn-ghost" href="#contact">Contact Me</a>
+      </div>
+      <div class="social-row">
+        <a class="soc" href="https://github.com/mahadhassanshire-svg" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23a11.5 11.5 0 0 1 3-.404c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.014 2.898-.014 3.293 0 .322.216.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+        <a class="soc" href="https://www.linkedin.com/in/mahad-hassan-498038391" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.24 8.16h4.52V23H.24V8.16zM8.34 8.16h4.33v2.02h.06c.6-1.14 2.08-2.34 4.28-2.34 4.58 0 5.42 3.01 5.42 6.92V23h-4.52v-7.1c0-1.7-.03-3.88-2.37-3.88-2.37 0-2.73 1.85-2.73 3.76V23H8.34V8.16z"/></svg></a>
+        <a class="soc" href="https://www.instagram.com/callme__mhd" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23a3.7 3.7 0 0 1-.9 1.38c-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63a5.9 5.9 0 0 0-2.13 1.38A5.9 5.9 0 0 0 .63 4.14C.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.8.72 1.47 1.38 2.13a5.9 5.9 0 0 0 2.13 1.38c.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56a5.9 5.9 0 0 0 2.13-1.38 5.9 5.9 0 0 0 1.38-2.13c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.9 5.9 0 0 0-1.38-2.13A5.9 5.9 0 0 0 19.86.63C19.1.33 18.22.13 16.95.07 15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84zm0 10.15A4 4 0 1 1 16 12a4 4 0 0 1-4 3.99zm6.4-11.85a1.44 1.44 0 1 0 1.44 1.44 1.44 1.44 0 0 0-1.44-1.44z"/></svg></a>
+        <a class="soc" href="https://wa.me/252610739015" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.08-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01s-.52.07-.79.37c-.27.3-1.04 1.02-1.04 2.48s1.06 2.88 1.21 3.08c.15.2 2.09 3.19 5.06 4.47.71.31 1.26.49 1.69.63.71.23 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35zM12.05 21.8h-.01a9.8 9.8 0 0 1-4.99-1.37l-.36-.21-3.71.97.99-3.62-.24-.37a9.79 9.79 0 0 1-1.5-5.22c0-5.41 4.41-9.81 9.83-9.81a9.75 9.75 0 0 1 6.94 2.88 9.74 9.74 0 0 1 2.87 6.94c0 5.41-4.41 9.82-9.81 9.82zM20.5 3.49A11.72 11.72 0 0 0 12.05 0C5.53 0 .22 5.31.22 11.83c0 2.09.55 4.12 1.58 5.92L.12 24l6.4-1.68a11.8 11.8 0 0 0 5.53 1.41h.01c6.52 0 11.83-5.31 11.83-11.83 0-3.16-1.23-6.13-3.46-8.41z"/></svg></a>
+        <a class="soc" href="mailto:mahadhassanshire@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24"><path d="M24 5.46v13.08c0 1.24-1.01 2.25-2.25 2.25H2.25C1.01 20.79 0 19.78 0 18.54V5.46C0 4.22 1.01 3.21 2.25 3.21h19.5C22.99 3.21 24 4.22 24 5.46zm-2.25 1.6L12 12.75 2.25 7.06v11.48h19.5V7.06z"/></svg></a>
+      </div>
+    </div>
+    <div class="badge-wrap">
+      <div class="lanyard"><span>Mahad Hassan Shire</span></div>
+      <div class="clip"></div>
+      <img class="id-badge" src="assets/badge.png" alt="Mahad Hassan Shire — Junior Developer Portfolio Badge">
+      <div class="badge-caption">Junior Developer &middot; Portfolio</div>
+    </div>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap reveal">
+    <div class="eyebrow">About Me</div>
+    <h2>Hi, I'm Mahad Hassan Shire</h2>
+    <p class="sub">Software Developer focused on building functional and beautiful digital products.</p>
+    <div class="about-grid">
+      <div class="photo-frame">
+        <img src="assets/badge.png" alt="Mahad Hassan Shire — Junior Developer Portfolio Badge" style="width:100%;border-radius:16px;display:block">
+        <strong style="display:block;margin-top:14px">Mahad Hassan Shire</strong>
+        <small>Junior Developer &middot; Computer Science Student</small>
+      </div>
+      <div>
+        <p style="color:var(--muted);margin-bottom:14px">I am <strong style="color:var(--text)">Mahad Hassan Shire</strong>, a Computer Science student at <strong style="color:var(--text)">Jamhuriya University</strong>, currently in my third semester, specializing in <strong style="color:var(--text)">Networking Security</strong>. I am also a web developer who enjoys turning ideas into clean, responsive websites.</p>
+        <p style="color:var(--muted);margin-bottom:22px">I started learning to code in 2025 and have been building projects ever since — from business websites to responsive front-end layouts. I am honest about where I am: still learning, improving with every project, and open to opportunities where I can grow.</p>
+        <div class="btns">
+          <a class="btn btn-primary" href="#portfolio">View Projects</a>
+          <a class="btn btn-ghost" href="assets/Mahad-Hassan-Shire-CV.pdf" download>Download CV</a>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" style="background:var(--bg2)">
+  <div class="wrap reveal">
+    <div class="eyebrow">Education</div>
+    <h2>Education</h2>
+    <p class="sub">My academic journey — from school in Somalia to university studies today.</p>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="meta">2025 – Present &middot; Third Semester</div>
+        <h3>Jamhuriya University</h3>
+        <p><strong style="color:var(--text)">Computer Science</strong> — Department of Networking Security. Currently in my third semester, studying computer science fundamentals with a specialization in networking and security.</p>
+      </div>
+      <div class="tl-item">
+        <div class="meta">Graduated</div>
+        <h3>Imamu Malik School</h3>
+        <p>Studied for four years and graduated from Imamu Malik School — completing my primary and secondary education here.</p>
+      </div>
+      <div class="tl-item">
+        <div class="meta">Earlier Education</div>
+        <h3>Uhud Primary and Secondary School</h3>
+        <p>Spent nearly four years at Uhud Primary and Secondary School before continuing my studies at Imamu Malik School.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section style="padding-top:0">
+  <div class="wrap reveal">
+    <div class="stats">
+      <div class="stat"><div class="num" data-count="5">0</div><div class="lbl">+ Projects Built</div></div>
+      <div class="stat"><div class="num" data-count="1">0</div><div class="lbl">Certificate</div></div>
+      <div class="stat"><div class="num" data-count="3">0</div><div class="lbl">Current Semester</div></div>
+      <div class="stat"><div class="num" data-count="2025">0</div><div class="lbl">Learning Since</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio" style="background:var(--bg2)">
+  <div class="wrap reveal">
+    <div class="eyebrow">Portfolio</div>
+    <h2>Portfolio</h2>
+    <p class="sub">Real projects from my GitHub — built while learning, from business websites to responsive front-end layouts.</p>
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="projects">Projects</button>
+      <button class="tab-btn" data-tab="certificates">Certificates</button>
+      <button class="tab-btn" data-tab="achievements">Achievements</button>
+      <button class="tab-btn" data-tab="techstack">Tech Stack</button>
+    </div>
+
+    <div class="tab-panel active" id="panel-projects">
+      <div class="grid3">
+        <div class="card">
+          <div class="thumb t1" style="background-image:url('assets/sba-preview.jpg');background-size:cover;background-position:top center"></div>
+          <h3>Somali Business Alliance</h3>
+          <p>A multi-page business platform connecting Somali traders and tech companies with buyers for electronics, solar energy, IT hardware and telecom equipment. Live in production.</p>
+          <div><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Responsive</span><span class="tag">Vercel</span></div>
+          <div class="btns" style="margin-top:16px">
+            <a class="btn btn-primary" href="https://somali-business-allience.vercel.app" target="_blank" rel="noopener">Live Site</a>
+            <a class="btn btn-ghost" href="https://github.com/mahadhassanshire-svg/Somali-Business-Allience" target="_blank" rel="noopener">Code</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="thumb t2">TECH</div>
+          <h3>Shirkada Tech</h3>
+          <p>A company website for a technology business — clean layout, service sections and a responsive structure built for mobile-first visitors.</p>
+          <div><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">UI Layout</span></div>
+          <div class="btns" style="margin-top:16px">
+            <a class="btn btn-ghost" href="https://github.com/mahadhassanshire-svg/ShirkadaTech" target="_blank" rel="noopener">View Code</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="thumb t3">RWD</div>
+          <h3>Responsive Web Design</h3>
+          <p>A hands-on collection of responsive layouts and front-end practice builds covering flexbox, grid, media queries and mobile-first design.</p>
+          <div><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Flexbox</span><span class="tag">Grid</span></div>
+          <div class="btns" style="margin-top:16px">
+            <a class="btn btn-ghost" href="https://github.com/mahadhassanshire-svg/responsivewebdesign" target="_blank" rel="noopener">View Code</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="panel-certificates">
+      <div class="grid2">
+        <a class="card" href="assets/certificate-successwise.png" target="_blank" rel="noopener" style="padding:14px">
+          <img src="assets/certificate-successwise.png" alt="SuccessWise.ai — Certificate of Completion, 28-Day AI Challenge, awarded to Mahad Hassan Shire" style="width:100%;border-radius:12px;display:block">
+        </a>
+        <div class="card">
+          <div class="meta">SuccessWise.ai &middot; 13 August 2026</div>
+          <h3>28-Day AI Challenge — Certificate of Completion</h3>
+          <p>Awarded to Mahad Hassan Shire for successfully completing the 28-Day AI Challenge in AI &amp; Technology.</p>
+          <div style="margin-top:10px"><span class="tag">AI</span><span class="tag">AI &amp; Technology</span></div>
+          <p style="margin-top:14px;font-size:.84rem">Certificate No. SW-2026-5G4TMQ</p>
+          <div class="btns" style="margin-top:16px">
+            <a class="btn btn-primary" href="https://successwise.ai/certificate/SW-2026-5G4TMQ" target="_blank" rel="noopener">Verify Certificate</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="panel-achievements">
+      <div class="card">
+        <h3>Building my record</h3>
+        <p>No awards yet — I am in my third semester and focused on learning and shipping projects. My first milestone is the <strong style="color:var(--text)">SuccessWise.ai 28-Day AI Challenge</strong> certificate, earned 13 August 2026. New achievements will be added here as they happen.</p>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="panel-techstack">
+      <div class="card" style="margin-bottom:22px">
+        <h3>Currently Learning</h3>
+        <p>I am at the beginning of my developer journey and I am honest about it. Rather than claim proficiency percentages I have not earned yet, here is exactly what I am studying and building with right now.</p>
+      </div>
+      <div class="grid3">
+        <div class="card">
+          <h3>Frontend</h3>
+          <p>Building responsive layouts and interactive pages.</p>
+          <div style="margin-top:10px"><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">JavaScript</span><span class="tag">Flexbox</span><span class="tag">CSS Grid</span><span class="tag">Responsive Design</span></div>
+        </div>
+        <div class="card">
+          <h3>Networking &amp; Security</h3>
+          <p>My university specialization at Jamhuriya University.</p>
+          <div style="margin-top:10px"><span class="tag">Computer Science</span><span class="tag">Networking Fundamentals</span><span class="tag">Network Security</span></div>
+        </div>
+        <div class="card">
+          <h3>Tools &amp; Workflow</h3>
+          <p>The tools I use to build, version and ship my projects.</p>
+          <div style="margin-top:10px"><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">VS Code</span><span class="tag">Vercel</span></div>
+        </div>
+      </div>
+      <div class="note">Skills shown as currently learning — update the percentages or add technologies as you progress.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS (anchor) -->
+<section id="skills" style="display:none"></section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap reveal">
+    <div class="eyebrow">Contact</div>
+    <h2>Let's work together</h2>
+    <p class="sub">Have a project or opportunity in mind? Send me a message or reach me on any of my channels.</p>
+
+    <div class="contact-split">
+      <form class="card contact-form" id="contactForm" novalidate>
+        <h3 style="color:var(--accent);font-size:1.35rem">Contact</h3>
+        <p class="lead">Anything you'd like to discuss? Just send me a message&hellip;</p>
+
+        <label class="field">
+          <span>Name</span>
+          <span class="input-wrap">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg>
+            <input type="text" id="mName" name="name" placeholder="Your name" maxlength="60" required>
+          </span>
+        </label>
+
+        <label class="field">
+          <span>E-mail</span>
+          <span class="input-wrap">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3 6l9 6.5L21 6"/></svg>
+            <input type="email" id="mEmail" name="email" placeholder="Your email" maxlength="120" required>
+          </span>
+        </label>
+
+        <label class="field">
+          <span>Message</span>
+          <span class="input-wrap area-wrap">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <textarea id="mMessage" name="message" placeholder="Your message" maxlength="2000" required></textarea>
+          </span>
+        </label>
+
+        <button class="btn send-btn" type="submit">
+          <svg viewBox="0 0 24 24" style="width:17px;height:17px"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg>
+          Send message
+        </button>
+        <div class="form-status" id="contactStatus" role="status" aria-live="polite"></div>
+      </form>
+
+      <div>
+        <div class="findme">Find me</div>
+        <div class="contact-list">
+        <a class="card contact-card" href="https://github.com/mahadhassanshire-svg" target="_blank" rel="noopener">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23a11.5 11.5 0 0 1 3-.404c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.014 2.898-.014 3.293 0 .322.216.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></span>
+        <span><strong>GitHub</strong><br><small style="color:var(--muted)">github.com/mahadhassanshire-svg</small></span>
+      </a>
+        <a class="card contact-card" href="https://www.linkedin.com/in/mahad-hassan-498038391" target="_blank" rel="noopener">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.24 8.16h4.52V23H.24V8.16zM8.34 8.16h4.33v2.02h.06c.6-1.14 2.08-2.34 4.28-2.34 4.58 0 5.42 3.01 5.42 6.92V23h-4.52v-7.1c0-1.7-.03-3.88-2.37-3.88-2.37 0-2.73 1.85-2.73 3.76V23H8.34V8.16z"/></svg></span>
+        <span><strong>LinkedIn</strong><br><small style="color:var(--muted)">linkedin.com/in/mahad-hassan-498038391</small></span>
+      </a>
+        <a class="card contact-card" href="https://www.instagram.com/callme__mhd" target="_blank" rel="noopener">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23a3.7 3.7 0 0 1-.9 1.38c-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63a5.9 5.9 0 0 0-2.13 1.38A5.9 5.9 0 0 0 .63 4.14C.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.8.72 1.47 1.38 2.13a5.9 5.9 0 0 0 2.13 1.38c.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56a5.9 5.9 0 0 0 2.13-1.38 5.9 5.9 0 0 0 1.38-2.13c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.9 5.9 0 0 0-1.38-2.13A5.9 5.9 0 0 0 19.86.63C19.1.33 18.22.13 16.95.07 15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84zm0 10.15A4 4 0 1 1 16 12a4 4 0 0 1-4 3.99zm6.4-11.85a1.44 1.44 0 1 0 1.44 1.44 1.44 1.44 0 0 0-1.44-1.44z"/></svg></span>
+        <span><strong>Instagram</strong><br><small style="color:var(--muted)">instagram.com/callme__mhd</small></span>
+      </a>
+        <a class="card contact-card" href="https://wa.me/252610739015" target="_blank" rel="noopener">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.08-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01s-.52.07-.79.37c-.27.3-1.04 1.02-1.04 2.48s1.06 2.88 1.21 3.08c.15.2 2.09 3.19 5.06 4.47.71.31 1.26.49 1.69.63.71.23 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35zM12.05 21.8h-.01a9.8 9.8 0 0 1-4.99-1.37l-.36-.21-3.71.97.99-3.62-.24-.37a9.79 9.79 0 0 1-1.5-5.22c0-5.41 4.41-9.81 9.83-9.81a9.75 9.75 0 0 1 6.94 2.88 9.74 9.74 0 0 1 2.87 6.94c0 5.41-4.41 9.82-9.81 9.82zM20.5 3.49A11.72 11.72 0 0 0 12.05 0C5.53 0 .22 5.31.22 11.83c0 2.09.55 4.12 1.58 5.92L.12 24l6.4-1.68a11.8 11.8 0 0 0 5.53 1.41h.01c6.52 0 11.83-5.31 11.83-11.83 0-3.16-1.23-6.13-3.46-8.41z"/></svg></span>
+        <span><strong>WhatsApp</strong><br><small style="color:var(--muted)">+252 61 073 9015</small></span>
+      </a>
+        <a class="card contact-card" href="mailto:mahadhassanshire@gmail.com">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M24 5.46v13.08c0 1.24-1.01 2.25-2.25 2.25H2.25C1.01 20.79 0 19.78 0 18.54V5.46C0 4.22 1.01 3.21 2.25 3.21h19.5C22.99 3.21 24 4.22 24 5.46zm-2.25 1.6L12 12.75 2.25 7.06v11.48h19.5V7.06z"/></svg></span>
+        <span><strong>Email</strong><br><small style="color:var(--muted)">mahadhassanshire@gmail.com</small></span>
+      </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMENTS -->
+<section id="comments" style="background:var(--bg2)">
+  <div class="wrap reveal">
+    <div class="eyebrow">Comments</div>
+    <h2>Leave a comment</h2>
+    <p class="sub">Share a thought, some feedback or just say hello. Comments are public — everyone who visits this page can see them.</p>
+
+    <div class="comments-grid">
+      <form class="card" id="commentForm" novalidate>
+        <label class="field">
+          <span>Name</span>
+          <span class="input-wrap">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg>
+            <input type="text" id="cName" name="name" placeholder="Your name" maxlength="60" required>
+          </span>
+        </label>
+
+        <label class="field">
+          <span>Comment</span>
+          <span class="input-wrap area-wrap">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <textarea id="cText" name="comment" placeholder="Write your comment here..." maxlength="600" required></textarea>
+          </span>
+        </label>
+
+        <label class="field">
+          <span>Profile photo (optional)</span>
+          <span class="file-drop" id="fileDrop">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="1.6"/><path d="M21 15l-5-5L5 21"/></svg>
+            <span id="fileLabel">Select Profile Photo</span>
+            <input type="file" id="cPhoto" accept="image/png,image/jpeg,image/webp">
+          </span>
+        </label>
+
+        <button class="btn btn-primary" type="submit" style="width:100%;justify-content:center">
+          <svg viewBox="0 0 24 24" style="width:17px;height:17px;fill:#04121a"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg>
+          Submit a Comment
+        </button>
+        <div class="hint">Maximum file size 5 MB · Your name and comment will be visible publicly.</div>
+        <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+      </form>
+
+      <div>
+        <div class="comments-head">Comments <span class="count" id="commentCount">0</span></div>
+        <div class="comment-list" id="commentList">
+          <div class="empty-comments" id="emptyComments">No comments yet. Be the first to leave one.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <b>Mahad Hassan Shire</b> &middot; Computer Science Student &amp; Web Developer &middot; Mogadishu, Somalia<br>
+  <small>mahadhassan.com &middot; Built with modern web technology &middot; &copy; <span id="year"></span></small>
+</footer>
+
+<script>
+// Mobile menu
+/* scroll spy for pill nav */
+var navAnchors = Array.prototype.slice.call(document.querySelectorAll('#navLinks a'));
+var spySections = navAnchors.map(function(a){return document.querySelector(a.getAttribute('href'));});
+function updateSpy(){
+  var y = window.scrollY + 140, idx = 0;
+  spySections.forEach(function(sec,i){ if(sec && sec.offsetTop <= y) idx = i; });
+  navAnchors.forEach(function(a,i){ a.classList.toggle('active', i===idx); });
+}
+window.addEventListener('scroll', updateSpy, {passive:true});
+updateSpy();
+
+/* sound toggle */
+var soundOn = true, soundBtn = document.getElementById('soundBtn'), audioCtx = null;
+function playTone(freq, dur){
+  if(!soundOn) return;
+  try{
+    audioCtx = audioCtx || new (window.AudioContext||window.webkitAudioContext)();
+    var o = audioCtx.createOscillator(), g = audioCtx.createGain();
+    o.type='sine'; o.frequency.value=freq;
+    g.gain.setValueAtTime(.0001, audioCtx.currentTime);
+    g.gain.exponentialRampToValueAtTime(.06, audioCtx.currentTime+.02);
+    g.gain.exponentialRampToValueAtTime(.0001, audioCtx.currentTime+dur);
+    o.connect(g); g.connect(audioCtx.destination);
+    o.start(); o.stop(audioCtx.currentTime+dur);
+  }catch(e){}
+}
+soundBtn.addEventListener('click', function(){
+  soundOn = !soundOn;
+  soundBtn.classList.toggle('muted', !soundOn);
+  soundBtn.setAttribute('aria-pressed', String(soundOn));
+  if(soundOn) playTone(660,.12);
+});
+window.addEventListener('load', function(){
+  document.querySelectorAll('#navLinks a, .btn').forEach(function(el){
+    el.addEventListener('click', function(){ playTone(520,.08); });
+  });
+});
+
+document.getElementById('hamburger').addEventListener('click',function(){
+  document.getElementById('navLinks').classList.toggle('open');
+});
+document.querySelectorAll('#navLinks a').forEach(function(a){
+  a.addEventListener('click',function(){document.getElementById('navLinks').classList.remove('open');});
+});
+document.getElementById('year').textContent=new Date().getFullYear();
+
+// Tabs
+document.querySelectorAll('.tab-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});
+    document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active');});
+    btn.classList.add('active');
+    document.getElementById('panel-'+btn.dataset.tab).classList.add('active');
+    animateSkills();
+  });
+});
+
+// Scroll reveal
+var io=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}
+  });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+
+// Counters + skill bars
+function animateSkills(){
+  document.querySelectorAll('.fill').forEach(function(f){f.style.width=f.dataset.w+'%';});
+}
+var counted=false;
+var statIO=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting&&!counted){
+      counted=true;
+      document.querySelectorAll('.num').forEach(function(n){
+        var target=parseInt(n.dataset.count,10),cur=0;
+        var iv=setInterval(function(){cur++;n.textContent=cur;if(cur>=target)clearInterval(iv);},220);
+      });
+      animateSkills();
+    }
+  });
+},{threshold:.4});
+var statsEl=document.querySelector('.stats');
+if(statsEl)statIO.observe(statsEl);
+
+// 3D tilt on hero card
+var tilt=document.getElementById('tiltCard');
+if(tilt){
+  tilt.addEventListener('mousemove',function(e){
+    var r=tilt.getBoundingClientRect();
+    var x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
+    tilt.style.transform='perspective(800px) rotateY('+(x*10)+'deg) rotateX('+(-y*10)+'deg)';
+  });
+  tilt.addEventListener('mouseleave',function(){tilt.style.transform='perspective(800px)';});
+}
+
+// 3D particle canvas (hero background)
+var cv=document.getElementById('bg3d'),ctx=cv.getContext('2d'),pts=[],mx=0,my=0;
+function resize(){cv.width=cv.offsetWidth;cv.height=cv.offsetHeight;}
+resize();window.addEventListener('resize',resize);
+for(var i=0;i<70;i++){pts.push({x:Math.random(),y:Math.random(),z:Math.random()*.8+.2,vx:(Math.random()-.5)*.0006,vy:(Math.random()-.5)*.0006});}
+document.addEventListener('mousemove',function(e){mx=(e.clientX/window.innerWidth-.5);my=(e.clientY/window.innerHeight-.5);});
+function draw(){
+  ctx.clearRect(0,0,cv.width,cv.height);
+  var t=Date.now()*.0004;
+  pts.forEach(function(p){
+    p.x+=p.vx;p.y+=p.vy;
+    if(p.x<0||p.x>1)p.vx*=-1; if(p.y<0||p.y>1)p.vy*=-1;
+    var px=(p.x+Math.sin(t+p.z*6)*.02+mx*.05*p.z)*cv.width;
+    var py=(p.y+Math.cos(t+p.z*6)*.02+my*.05*p.z)*cv.height;
+    var s=p.z*2.4;
+    ctx.beginPath();ctx.arc(px,py,s,0,Math.PI*2);
+    ctx.fillStyle='rgba(34,211,238,'+(0.25+p.z*0.5)+')';ctx.fill();
+  });
+  // connect nearby points
+  for(var a=0;a<pts.length;a++)for(var b=a+1;b<pts.length;b++){
+    var dx=pts[a].x-pts[b].x,dy=pts[a].y-pts[b].y,d=dx*dx+dy*dy;
+    if(d<0.02){
+      ctx.beginPath();
+      ctx.moveTo(pts[a].x*cv.width,pts[a].y*cv.height);
+      ctx.lineTo(pts[b].x*cv.width,pts[b].y*cv.height);
+      ctx.strokeStyle='rgba(34,211,238,'+(0.12*(1-d/0.02))+')';ctx.lineWidth=1;ctx.stroke();
+    }
+  }
+  requestAnimationFrame(draw);
+}
+draw();
+</script>
+
+<script>
+/* ================= COMMENTS =================
+   To make comments public for everyone, set COMMENTS_API to your backend
+   endpoint (Supabase / Firebase / any JSON API). Until then, comments are
+   stored in this browser only so you can test the form.
+   Expected API: GET -> [{name, comment, photo, createdAt}]
+                 POST {name, comment, photo} -> {ok:true}
+============================================ */
+var COMMENTS_API = ""; // e.g. "https://xxxx.supabase.co/functions/v1/comments"
+var STORE_KEY = "mhs_comments_v1";
+
+var form = document.getElementById('commentForm');
+var nameEl = document.getElementById('cName');
+var textEl = document.getElementById('cText');
+var photoEl = document.getElementById('cPhoto');
+var fileLabel = document.getElementById('fileLabel');
+var listEl = document.getElementById('commentList');
+var emptyEl = document.getElementById('emptyComments');
+var countEl = document.getElementById('commentCount');
+var statusEl = document.getElementById('formStatus');
+var photoData = null;
+
+photoEl.addEventListener('change', function(){
+  var f = photoEl.files && photoEl.files[0];
+  if(!f){ photoData = null; fileLabel.textContent = 'Select Profile Photo'; return; }
+  if(f.size > 5 * 1024 * 1024){
+    statusEl.textContent = 'That image is larger than 5 MB. Please choose a smaller photo.';
+    statusEl.className = 'form-status err';
+    photoEl.value = ''; photoData = null; fileLabel.textContent = 'Select Profile Photo'; return;
+  }
+  var reader = new FileReader();
+  reader.onload = function(e){
+    // downscale to keep storage small
+    var img = new Image();
+    img.onload = function(){
+      var max = 220, scale = Math.min(1, max / Math.max(img.width, img.height));
+      var c = document.createElement('canvas');
+      c.width = Math.round(img.width * scale); c.height = Math.round(img.height * scale);
+      c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+      photoData = c.toDataURL('image/jpeg', 0.82);
+      fileLabel.textContent = f.name;
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(f);
+});
+
+function escapeText(t){ return String(t || ''); }
+
+function timeAgo(iso){
+  var d = new Date(iso), diff = (Date.now() - d.getTime()) / 1000;
+  if(diff < 60) return 'just now';
+  if(diff < 3600) return Math.floor(diff/60) + ' min ago';
+  if(diff < 86400) return Math.floor(diff/3600) + ' hours ago';
+  if(diff < 604800) return Math.floor(diff/86400) + ' days ago';
+  return d.toLocaleDateString(undefined, {day:'numeric', month:'short', year:'numeric'});
+}
+
+function initials(name){
+  return name.trim().split(/\s+/).slice(0,2).map(function(w){ return w.charAt(0).toUpperCase(); }).join('');
+}
+
+function makeCommentEl(c){
+  var wrap = document.createElement('div');
+  wrap.className = 'comment';
+  var av = document.createElement('div');
+  av.className = 'av';
+  if(c.photo){ var im = document.createElement('img'); im.src = c.photo; im.alt = ''; av.appendChild(im); }
+  else { av.textContent = initials(c.name || '?'); }
+  var body = document.createElement('div');
+  body.className = 'body';
+  var who = document.createElement('div');
+  who.className = 'who';
+  var b = document.createElement('b'); b.textContent = c.name || 'Anonymous';
+  var t = document.createElement('time'); t.textContent = timeAgo(c.createdAt || Date.now());
+  who.appendChild(b); who.appendChild(t);
+  var p = document.createElement('p'); p.textContent = c.comment || '';
+  body.appendChild(who); body.appendChild(p);
+  wrap.appendChild(av); wrap.appendChild(body);
+  return wrap;
+}
+
+function renderComments(items){
+  listEl.innerHTML = '';
+  countEl.textContent = items.length;
+  if(!items.length){
+    listEl.appendChild(emptyEl || document.createElement('div'));
+    return;
+  }
+  items.slice().sort(function(a,b){ return new Date(b.createdAt) - new Date(a.createdAt); })
+       .forEach(function(c){ listEl.appendChild(makeCommentEl(c)); });
+}
+
+function loadLocal(){
+  try { return JSON.parse(localStorage.getItem(STORE_KEY) || '[]'); } catch(e){ return []; }
+}
+function saveLocal(items){
+  try { localStorage.setItem(STORE_KEY, JSON.stringify(items)); } catch(e){}
+}
+
+function loadComments(){
+  if(!COMMENTS_API){ renderComments(loadLocal()); return; }
+  fetch(COMMENTS_API).then(function(r){ return r.json(); })
+    .then(function(data){ renderComments(Array.isArray(data) ? data : []); })
+    .catch(function(){ renderComments(loadLocal()); });
+}
+
+form.addEventListener('submit', function(e){
+  e.preventDefault();
+  var name = nameEl.value.trim(), comment = textEl.value.trim();
+  if(name.length < 2){ statusEl.textContent = 'Please enter your name.'; statusEl.className = 'form-status err'; nameEl.focus(); return; }
+  if(comment.length < 2){ statusEl.textContent = 'Please write a comment.'; statusEl.className = 'form-status err'; textEl.focus(); return; }
+
+  var entry = { name: name, comment: comment, photo: photoData, createdAt: new Date().toISOString() };
+
+  if(COMMENTS_API){
+    fetch(COMMENTS_API, {
+      method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(entry)
+    }).then(function(r){
+      if(!r.ok) throw new Error('bad');
+      return loadComments();
+    }).then(function(){
+      form.reset(); photoData = null; fileLabel.textContent = 'Select Profile Photo';
+      statusEl.textContent = 'Thank you — your comment is published.';
+      statusEl.className = 'form-status ok';
+      playTone && playTone(760,.1);
+    }).catch(function(){
+      statusEl.textContent = 'Something went wrong. Please try again.';
+      statusEl.className = 'form-status err';
+    });
+  } else {
+    var items = loadLocal(); items.push(entry); saveLocal(items); renderComments(items);
+    form.reset(); photoData = null; fileLabel.textContent = 'Select Profile Photo';
+    statusEl.textContent = 'Comment added (preview mode — visible in this browser only until the comment service is connected).';
+    statusEl.className = 'form-status ok';
+    if(typeof playTone === 'function') playTone(760,.1);
+  }
+});
+
+loadComments();
+</script>
+
+
+<script>
+/* ================= CONTACT FORM =================
+   Set CONTACT_ENDPOINT to a form service (Formspree, Web3Forms, Getform...)
+   and messages will be emailed to you without leaving the page.
+   Leave it empty and the form opens the visitor's email app instead.
+   Example: var CONTACT_ENDPOINT = "https://formspree.io/f/xxxxxxx";
+================================================= */
+var CONTACT_ENDPOINT = "";
+var MY_EMAIL = "mahadhassanshire@gmail.com";
+
+var cForm = document.getElementById('contactForm');
+var cName = document.getElementById('mName');
+var cEmail = document.getElementById('mEmail');
+var cMsg = document.getElementById('mMessage');
+var cStatus = document.getElementById('contactStatus');
+
+cForm.addEventListener('submit', function(e){
+  e.preventDefault();
+  var name = cName.value.trim(), email = cEmail.value.trim(), message = cMsg.value.trim();
+  if(name.length < 2){ cStatus.textContent = 'Please enter your name.'; cStatus.className='form-status err'; cName.focus(); return; }
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){ cStatus.textContent = 'Please enter a valid email address.'; cStatus.className='form-status err'; cEmail.focus(); return; }
+  if(message.length < 5){ cStatus.textContent = 'Please write a longer message.'; cStatus.className='form-status err'; cMsg.focus(); return; }
+
+  if(CONTACT_ENDPOINT){
+    cStatus.textContent = 'Sending…'; cStatus.className = 'form-status';
+    fetch(CONTACT_ENDPOINT, {
+      method:'POST',
+      headers:{'Content-Type':'application/json', Accept:'application/json'},
+      body: JSON.stringify({ name:name, email:email, message:message })
+    }).then(function(r){
+      if(!r.ok) throw new Error('failed');
+      cForm.reset();
+      cStatus.textContent = 'Thank you — your message has been sent. I will reply soon.';
+      cStatus.className = 'form-status ok';
+      if(typeof playTone === 'function') playTone(780,.1);
+    }).catch(function(){
+      cStatus.textContent = 'Could not send right now. Please email me at ' + MY_EMAIL + '.';
+      cStatus.className = 'form-status err';
+    });
+  } else {
+    var subject = encodeURIComponent('Portfolio message from ' + name);
+    var body = encodeURIComponent(message + '\n\n— ' + name + '\n' + email);
+    window.location.href = 'mailto:' + MY_EMAIL + '?subject=' + subject + '&body=' + body;
+    cStatus.textContent = 'Opening your email app with the message ready to send…';
+    cStatus.className = 'form-status ok';
+  }
+});
+</script>
+
+</body>
+</html>
