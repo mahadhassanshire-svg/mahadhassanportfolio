@@ -1,0 +1,14 @@
+{
+  "name": "Mahad Hassan Shire — Portfolio",
+  "short_name": "Mahad Hassan",
+  "description": "Computer Science student & web developer portfolio — Mogadishu, Somalia.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050810",
+  "theme_color": "#050810",
+  "icons": [
+    { "src": "assets/favicon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "assets/favicon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "assets/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}
